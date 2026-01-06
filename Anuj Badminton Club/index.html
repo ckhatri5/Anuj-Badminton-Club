@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anuj Badminton Club</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div id="error-log"
+        style="display:none; background:red; color:white; padding:10px; position:fixed; top:0; left:0; width:100%; z-index:9999;">
+    </div>
+    <script>
+        window.onerror = function (msg, url, line, col, error) {
+            const div = document.getElementById('error-log');
+            div.style.display = 'block';
+            div.innerHTML += `<div>Error: ${msg} at ${url}:${line}:${col}</div>`;
+            return false;
+        };
+    </script>
+    <div id="app">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="logo">
+                <i data-lucide="zap" class="logo-icon"></i>
+                <span>ANUJ BADMINTON CLUB</span>
+            </div>
+            <div class="nav-links" id="nav-links">
+                <a href="#home" class="nav-item active" data-page="home">Dashboard</a>
+                <a href="#players" class="nav-item" data-page="players">Players</a>
+                <a href="#attendance" class="nav-item" data-page="attendance">Attendance</a>
+                <a href="#matches" class="nav-item" data-page="matches">Matches</a>
+                <a href="#funds" class="nav-item" data-page="funds">Funds</a>
+                <a href="#rules" class="nav-item" data-page="rules">Rules</a>
+                <a href="#memories" class="nav-item" data-page="memories">Memories</a>
+                <a href="#admin" class="nav-item admin-link" data-page="admin">Admin</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i data-lucide="menu"></i>
+            </button>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main id="main-content">
+            <!-- Pages will be injected here by router.js -->
+            <div id="home" class="page active">
+                <!-- Hero Section -->
+                <section class="hero">
+                    <div class="hero-content">
+                        <h1 class="glitch" data-text="SMASH HARD">SMASH HARD</h1>
+                        <p class="subtitle">Anuj Badminton Club Portal</p>
+                        <div class="live-status">
+                            <span class="dot pulse"></span>
+                            <span id="court-status">Courts Available</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Dashboard Grid -->
+                <div class="dashboard-grid">
+                    <div class="card neon-border" style="grid-column: 1 / -1;">
+                        <h3>Daily Notice</h3>
+                        <div id="daily-note">Loading...</div>
+                    </div>
+                    <div class="card neon-border">
+                        <h3>Recent Donations</h3>
+                        <div id="recent-donations">Loading...</div>
+                    </div>
+                    <div class="card neon-border">
+                        <h3>Live Clock</h3>
+                        <div id="live-clock"
+                            style="font-size: 2.5rem; font-weight: bold; text-align: center; color: var(--primary);">
+                            --:--:--</div>
+                    </div>
+                    <div class="card neon-border">
+                        <h3>Stopwatch</h3>
+                        <div id="stopwatch-widget"></div>
+                    </div>
+                    <div class="card neon-border">
+                        <h3>Today's Schedule</h3>
+                        <div id="today-schedule">Loading...</div>
+                    </div>
+                    <div class="card neon-border">
+                        <h3>Live Rankings</h3>
+                        <div id="mini-leaderboard">Loading...</div>
+                    </div>
+                    <div class="card neon-border">
+                        <h3>Match Calendar</h3>
+                        <div id="calendar-widget">Loading...</div>
+                    </div>
+                    <div class="card neon-border">
+                        <h3>Weather</h3>
+                        <div id="weather-widget">24°C Clear Sky</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Placeholders for other pages -->
+            <div id="players" class="page hidden"></div>
+            <div id="attendance" class="page hidden"></div>
+            <div id="matches" class="page hidden"></div>
+            <div id="funds" class="page hidden"></div>
+            <div id="rules" class="page hidden"></div>
+            <div id="memories" class="page hidden"></div>
+            <div id="admin" class="page hidden"></div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="js/store.js?v=5"></script>
+    <script type="module" src="js/router.js?v=5"></script>
+    <script type="module" src="js/app.js?v=5"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
